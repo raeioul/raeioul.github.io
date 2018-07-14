@@ -14,15 +14,20 @@ export const Wrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 8rem;
     width: 130px;
     height: 160px;
+    transform: ${(p) => (p.activated ? 'rotateY(180deg)' : 'rotateY(0)')};
     transform-style: preserve-3d;
     transition: transform 300ms;
 
     .face {
       position: absolute;
-      color: #fff;
-      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       height: 100%;
       width: 100%;
       backface-visibility: hidden;
@@ -34,18 +39,14 @@ export const Wrapper = styled.div`
 
     .back {
       background-color: var(--mango);
-      background-image: url("${(p) => (p.bgImg)}");
+      background-image: url("${(p) => p.bgImg}");
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center center;
       transform: rotateY(180deg);
     }
 
-
-  }
-
-  &:hover .card {
-    transform: rotateY(180deg);
+    
   }
 `;
 

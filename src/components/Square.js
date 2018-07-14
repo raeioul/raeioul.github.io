@@ -4,6 +4,7 @@ import { Wrapper } from './Square.styles';
 
 type Props = {
   bgImg: string;
+  obverse: string;
 };
 
 type State = {
@@ -35,7 +36,7 @@ class Square extends React.Component<Props, State> {
       >
         <div className="card">
           <div className="face front">
-            Front
+            {this.props.obverse}
           </div>
           <div className="face back" />
         </div>
