@@ -3,7 +3,7 @@ import React from 'react';
 import { Wrapper } from './Square.styles';
 
 type Props = {
-  content: string;
+  bgImg: string;
 };
 
 type State = {
@@ -25,19 +25,19 @@ class Square extends React.Component<Props, State> {
   };
 
   render() {
+    console.log(this.props.bgImg);
     return (
       <Wrapper
         onClick={this.handleBoxActivation}
         activated={this.state.activated}
+        bgImg={this.props.bgImg}
         Blaaaa
       >
         <div className="card">
           <div className="face front">
             Front
           </div>
-          <div className="face back">
-            Back
-          </div>
+          <div className="face back" />
         </div>
       </Wrapper>
     );

@@ -33,7 +33,11 @@ export const Wrapper = styled.div`
     }
 
     .back {
-      background: var(--mango);
+      background-color: var(--mango);
+      background-image: url("${(p) => (p.bgImg)}");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
       transform: rotateY(180deg);
     }
 
