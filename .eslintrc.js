@@ -55,5 +55,6 @@ module.exports = {
       'react/jsx-one-expression-per-line': 0,
       'object-curly-newline': ['error', { consistent: true }],
       'operator-linebreak': 0,
+      'jsx-a11y/label-has-for': 0,
     },
   };

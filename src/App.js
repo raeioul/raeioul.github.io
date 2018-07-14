@@ -1,88 +1,83 @@
 // @flow
 import * as React from 'react';
+import _ from 'lodash';
 import { Wrapper, Container } from './App.styles';
 
 import Square from './components/Square';
+import img1 from './assets/images/1.jpg';
+import img2 from './assets/images/2.jpg';
+import img3 from './assets/images/3.jpg';
+import img4 from './assets/images/4.png';
+import img5 from './assets/images/5.jpg';
+import img6 from './assets/images/6.jpg';
 
 type Props = {};
 
 type State = {
   activeCards: number,
-  cards: Array<Object>,
+  images: Array<string>,
+  cards: Array<?Object>,
 };
 
 class App extends React.Component<Props, State> {
   state = {
+    boardSize: 0,
+    boardChanged: false,
     activeCards: 0,
-    cards: [
-      {
-        id: '1',
-        image:
-          'https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Kitten_in_Rizal_Park%2C_Manila.jpg/1200px-Kitten_in_Rizal_Park%2C_Manila.jpg',
-        isActive: false,
-      },
-      {
-        id: '2',
-        image:
-          'https://www.godspeedanimalcare.com/images/content/rehabilitation-center/doggie-playcare.jpg',
-        isActive: false,
-      },
-      {
-        id: '3',
-        image:
-          'https://www.zoopraha.cz/images/stavby-expozice/Ostrov_lemuru.jpg',
-        isActive: false,
-      },
-      {
-        id: '4',
-        image:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbhh3OAq-MEt992I4kTute1hd8FUsc1cjqjKHOZrWkihw8M8aq',
-        isActive: false,
-      },
-      {
-        id: '5',
-        image:
-          'http://cdn0.wideopenpets.com/wp-content/uploads/2018/02/Untitled-design-11-770x405.png',
-        isActive: false,
-      },
-      {
-        id: '6',
-        image:
-        'https://www.zoopraha.cz/images/stavby-expozice/Ostrov_lemuru.jpg',
-        isActive: false,
-      },
-      {
-        id: '7',
-        image:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Kitten_in_Rizal_Park%2C_Manila.jpg/1200px-Kitten_in_Rizal_Park%2C_Manila.jpg',
-        isActive: false,
-      },
-      {
-        id: '8',
-        image:
-        'http://cdn0.wideopenpets.com/wp-content/uploads/2018/02/Untitled-design-11-770x405.png',
-        isActive: false,
-      },
-      {
-        id: '9',
-        image:
-          'https://www.godspeedanimalcare.com/images/content/rehabilitation-center/doggie-playcare.jpg',
-        isActive: false,
-      },
-      {
-        id: '10',
-        image:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbhh3OAq-MEt992I4kTute1hd8FUsc1cjqjKHOZrWkihw8M8aq',
-        isActive: false,
-      },
-    ],
+    images: [img1, img2, img3, img4, img5, img6],
+    cards: [],
   };
+
+  componentDidMount() {
+    this.populateBoard();
+  }
 
   componentDidUpdate() {
     if (this.state.activeCards >= 2) {
       setTimeout(this.deactivateAllCards, 1000);
     }
+
+    if (this.state.boardChanged) {
+      this.populateBoard();
+    }
   }
+
+  populateBoard = () => {
+    const cards = this.createCards();
+    this.setState((prevState) => ({
+      ...prevState,
+      boardChanged: false,
+      cards,
+    }));
+  }
+
+  shuffleImages = (boardSize) => {
+    // Shuffle initial array and make a slice needed
+    // to populate board of specified size
+    let imgArray = _.shuffle(this.state.images);
+    imgArray = imgArray.slice(0, boardSize / 2);
+
+    // Each image appear twice on the board
+    const images = [...imgArray, ...imgArray];
+
+    return _.shuffle(images);
+  };
+
+  createCards = () => {
+    const { boardSize } = this.state;
+    const cards = [];
+    const images = this.shuffleImages(boardSize);
+
+    for (let i = 0; i < boardSize; i += 1) {
+      cards.push({
+        id: `${i}`,
+        image: images[i],
+        isActive: false,
+      });
+    }
+
+    return cards;
+  };
 
   deactivateAllCards = () => {
     this.setState((prevState) => ({
@@ -118,6 +113,15 @@ class App extends React.Component<Props, State> {
     }));
   };
 
+  handleBoardSizeChange = (e) => {
+    const updatedBoardSize = e.target.value;
+    this.setState((prevState) => ({
+      ...prevState,
+      boardSize: updatedBoardSize,
+      boardChanged: true,
+    }));
+  };
+
   renderCards = () => {
     return this.state.cards.map((card) => (
       <Square
@@ -135,7 +139,24 @@ class App extends React.Component<Props, State> {
     return (
       <Wrapper>
         <h1>Find the Pair</h1>
-        <Container>{this.renderCards()}</Container>
+        <div>
+          <label id="bord-size" htmlFor="board-size">
+            Board Size
+          </label>
+          <select
+            name="board-size"
+            value={this.state.boardSize}
+            onChange={this.handleBoardSizeChange}
+          >
+            <option value="0">-</option>
+            <option value="4">4</option>
+            <option value="6">6</option>
+            <option value="8">8</option>
+            <option value="12">12</option>
+          </select>
+        </div>
+
+        <Container>{this.state.cards && this.renderCards()}</Container>
       </Wrapper>
     );
   }
