@@ -6,7 +6,6 @@ export const Wrapper = styled.div`
   align-items: center;
   width: 150px;
   height: 180px;
-  border: 1px solid black;
   perspective: 500px;
 
   .card {
@@ -14,7 +13,6 @@ export const Wrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #fff;
     font-weight: 700;
     font-size: 8rem;
     width: 130px;
@@ -28,13 +26,19 @@ export const Wrapper = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
+      border-radius: 5px;
+      box-shadow: 0 0 15px 0 #999;
       height: 100%;
       width: 100%;
       backface-visibility: hidden;
     }
 
     .front {
-      background: #f00;
+      background: var(--mango);
+
+      h4 {
+        color: #fff;
+      }
     }
 
     .back {
