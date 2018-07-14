@@ -106,7 +106,7 @@ class App extends React.Component<Props, State> {
   render() {
     return (
       <Wrapper>
-        <h1>Find the Difference</h1>
+        <h1>Find the Pair</h1>
         <Container>{this.renderCards()}</Container>
       </Wrapper>
     );
