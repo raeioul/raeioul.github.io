@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import _ from 'lodash';
-import { Wrapper, Container, Success } from './App.styles';
+import { Wrapper, Container, SuccessWrapper, Success, SuccessButton } from './App.styles';
 
 import Square from './components/Square';
 import img1 from './assets/images/1.jpg';
@@ -205,7 +205,14 @@ class App extends React.Component<Props, State> {
 
         <Container>{this.state.cards && this.renderCards()}</Container>
 
-        {this.state.noMatched === this.state.boardSize / 2 && <Success>You Won!</Success>}
+        {this.state.noMatched === this.state.boardSize / 2 && (
+          <SuccessWrapper>
+            <Success>You Won!</Success>
+            <SuccessButton type="submit" onClick={this.handleResetBoard}>
+              Play Again!
+            </SuccessButton>
+          </SuccessWrapper>
+        )}
       </Wrapper>
     );
   }
