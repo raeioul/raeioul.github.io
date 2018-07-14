@@ -50,9 +50,7 @@ export const Wrapper = styled.div`
       background-repeat: no-repeat;
       background-position: center center;
       transform: rotateY(180deg);
-    }
-
-    
+    }    
   }
 `;
 

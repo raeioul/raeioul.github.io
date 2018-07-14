@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import _ from 'lodash';
-import { Wrapper, Container } from './App.styles';
+import { Wrapper, Container, Success } from './App.styles';
 
 import Square from './components/Square';
 import img1 from './assets/images/1.jpg';
@@ -38,8 +38,9 @@ class App extends React.Component<Props, State> {
     if (this.state.activeCards.length >= 2) {
       if (this.state.activeCards[0] === this.state.activeCards[1]) {
         this.handleMatchedCards();
+      } else {
+        setTimeout(this.deactivateAllCards, 1000);
       }
-      setTimeout(this.deactivateAllCards, 1000);
     }
 
     if (this.state.boardChanged) {
@@ -131,11 +132,14 @@ class App extends React.Component<Props, State> {
       return updatedCard;
     });
 
-    this.setState((prevState) => ({
-      cards: updatedCards,
-      activeCards: [],
-      noMatched: prevState.noMatched + 1,
-    }));
+    this.setState(
+      (prevState) => ({
+        cards: updatedCards,
+        activeCards: [],
+        noMatched: prevState.noMatched + 1,
+      }),
+      this.deactivateAllCards,
+    );
   };
 
   handleBoardSizeChange = (e) => {
@@ -200,6 +204,8 @@ class App extends React.Component<Props, State> {
         </div>
 
         <Container>{this.state.cards && this.renderCards()}</Container>
+
+        {this.state.noMatched === this.state.boardSize / 2 && <Success>You Won!</Success>}
       </Wrapper>
     );
   }

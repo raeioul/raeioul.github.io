@@ -26,3 +26,4 @@
 ## Bugs
 
 - [ ] - number of tries is incremented after timeout (hence the delay) - should be increased immediately
+- [x] - successfull match must reset timeout
