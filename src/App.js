@@ -27,6 +27,7 @@ class App extends React.Component<Props, State> {
     images: [img1, img2, img3, img4, img5, img6],
     cards: [],
     noTries: 0,
+    noMatched: 0,
   };
 
   componentDidMount() {
@@ -42,7 +43,7 @@ class App extends React.Component<Props, State> {
     }
 
     if (this.state.boardChanged) {
-      this.populateBoard();
+      this.handleResetBoard();
     }
   }
 
@@ -83,14 +84,6 @@ class App extends React.Component<Props, State> {
 
     return cards;
   };
-
-  // incrementTriesCounter = () => {
-  //   console.log('foo');
-
-  //   this.setState((prevState) => ({
-  //     noTries: prevState.noTries + 1,
-  //   }));
-  // };
 
   deactivateAllCards = () => {
     this.setState((prevState) => ({
@@ -138,7 +131,11 @@ class App extends React.Component<Props, State> {
       return updatedCard;
     });
 
-    this.setState((prevState) => ({ cards: updatedCards, activeCards: [] }));
+    this.setState((prevState) => ({
+      cards: updatedCards,
+      activeCards: [],
+      noMatched: prevState.noMatched + 1,
+    }));
   };
 
   handleBoardSizeChange = (e) => {
@@ -148,6 +145,18 @@ class App extends React.Component<Props, State> {
       boardSize: updatedBoardSize,
       boardChanged: true,
     }));
+  };
+
+  handleResetBoard = () => {
+    this.setState(
+      (prevState) => ({
+        ...prevState,
+        activeCards: [],
+        noTries: 0,
+        noMatched: 0,
+      }),
+      this.populateBoard,
+    );
   };
 
   renderCards = () => {
@@ -167,7 +176,9 @@ class App extends React.Component<Props, State> {
     return (
       <Wrapper>
         <h1>Find the Pair</h1>
-        <h4>No Tries: {this.state.noTries}</h4>
+        <h4>
+          No Tries: {this.state.noTries}; No Matched: {this.state.noMatched}
+        </h4>
         <div>
           <label id="bord-size" htmlFor="board-size">
             Board Size
@@ -183,6 +194,9 @@ class App extends React.Component<Props, State> {
             <option value="8">8</option>
             <option value="12">12</option>
           </select>
+          <button type="submit" onClick={this.handleResetBoard}>
+            Reset
+          </button>
         </div>
 
         <Container>{this.state.cards && this.renderCards()}</Container>

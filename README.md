@@ -14,7 +14,15 @@
 - [x] and only two images may be activated at the same time
 - [x] create random array of cards (odd number, 2 for each selected image)
 - [x] allow player to choose game's board size
+- [ ] add reset button
+- [ ] add timer
+- [ ] add score table (top x)
 - [ ] make it fully responsive
 - [ ] move state to Redux store
 - [ ] add persistence
+- [ ] restyling
 - [ ] add tests ;D
+
+## Bugs
+
+- [ ] - number of tries is incremented after timeout (hence the delay) - should be increased immediately
