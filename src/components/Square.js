@@ -6,18 +6,16 @@ type Props = {
   front: string,
   image: string,
   activated: boolean,
+  matched: boolean,
   clicked: (void) => void,
 };
-
-// type State = {
-//   activated: boolean,
-// };
 
 const Square = (props: Props) => {
   return (
     <Wrapper
       onClick={props.clicked}
       activated={props.activated}
+      matched={props.matched}
       bgImg={props.image}
     >
       <div className="card">

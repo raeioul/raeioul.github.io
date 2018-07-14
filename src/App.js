@@ -14,18 +14,19 @@ import img6 from './assets/images/6.jpg';
 type Props = {};
 
 type State = {
-  activeCards: number,
+  activeCards: Array<number>,
   images: Array<string>,
   cards: Array<?Object>,
 };
 
 class App extends React.Component<Props, State> {
   state = {
-    boardSize: 0,
+    boardSize: 4,
     boardChanged: false,
-    activeCards: 0,
+    activeCards: [],
     images: [img1, img2, img3, img4, img5, img6],
     cards: [],
+    noTries: 0,
   };
 
   componentDidMount() {
@@ -33,7 +34,10 @@ class App extends React.Component<Props, State> {
   }
 
   componentDidUpdate() {
-    if (this.state.activeCards >= 2) {
+    if (this.state.activeCards.length >= 2) {
+      if (this.state.activeCards[0] === this.state.activeCards[1]) {
+        this.handleMatchedCards();
+      }
       setTimeout(this.deactivateAllCards, 1000);
     }
 
@@ -49,7 +53,7 @@ class App extends React.Component<Props, State> {
       boardChanged: false,
       cards,
     }));
-  }
+  };
 
   shuffleImages = (boardSize) => {
     // Shuffle initial array and make a slice needed
@@ -73,36 +77,46 @@ class App extends React.Component<Props, State> {
         id: `${i}`,
         image: images[i],
         isActive: false,
+        matched: false,
       });
     }
 
     return cards;
   };
 
+  // incrementTriesCounter = () => {
+  //   console.log('foo');
+
+  //   this.setState((prevState) => ({
+  //     noTries: prevState.noTries + 1,
+  //   }));
+  // };
+
   deactivateAllCards = () => {
     this.setState((prevState) => ({
       ...prevState,
-      activeCards: 0,
+      activeCards: [],
       cards: prevState.cards.map((card) => {
         const updatedCard = card;
         updatedCard.isActive = false;
         return updatedCard;
       }),
+      noTries: prevState.noTries + 1,
     }));
   };
 
-  handleBoxActivation = (cardId: string) => {
+  handleCardActivation = (cardId: string) => {
     const selectedCard = this.state.cards.filter(
       (card) => card.id === cardId,
     )[0];
 
-    if (this.state.activeCards >= 2 || selectedCard.isActive) {
+    if (this.state.activeCards.length >= 2 || selectedCard.isActive) {
       return;
     }
 
     this.setState((prevState) => ({
       ...prevState,
-      activeCards: prevState.activeCards + 1,
+      activeCards: [...prevState.activeCards, selectedCard.image],
       cards: prevState.cards.map((card) => {
         const updatedCard = card;
         if (updatedCard.id === cardId) {
@@ -111,6 +125,20 @@ class App extends React.Component<Props, State> {
         return updatedCard;
       }),
     }));
+  };
+
+  handleMatchedCards = () => {
+    const updatedCards = this.state.cards.map((card) => {
+      const updatedCard = card;
+      const isActivated = this.state.activeCards.includes(updatedCard.image);
+      if (isActivated) {
+        updatedCard.matched = true;
+      }
+
+      return updatedCard;
+    });
+
+    this.setState((prevState) => ({ cards: updatedCards, activeCards: [] }));
   };
 
   handleBoardSizeChange = (e) => {
@@ -126,9 +154,9 @@ class App extends React.Component<Props, State> {
     return this.state.cards.map((card) => (
       <Square
         key={card.id}
-        clicked={() => this.handleBoxActivation(card.id)}
-        noActivated={this.state.activeCards}
+        clicked={() => this.handleCardActivation(card.id)}
         activated={card.isActive}
+        matched={card.matched}
         front="?"
         image={card.image}
       />
@@ -139,6 +167,7 @@ class App extends React.Component<Props, State> {
     return (
       <Wrapper>
         <h1>Find the Pair</h1>
+        <h4>No Tries: {this.state.noTries}</h4>
         <div>
           <label id="bord-size" htmlFor="board-size">
             Board Size
