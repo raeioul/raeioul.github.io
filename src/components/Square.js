@@ -31,8 +31,13 @@ class Square extends React.Component<Props, State> {
         activated={this.state.activated}
         Blaaaa
       >
-        <div>
-          <p>{this.props.content}</p>
+        <div className="card">
+          <div className="face front">
+            Front
+          </div>
+          <div className="face back">
+            Back
+          </div>
         </div>
       </Wrapper>
     );

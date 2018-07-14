@@ -8,6 +8,10 @@ export default css`
     --dust: #666;
   }
 
+  * {
+    box-sizing: border-box;
+  }
+
   html {
     font-size: 62.5%;
   }

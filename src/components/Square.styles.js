@@ -7,30 +7,42 @@ export const Wrapper = styled.div`
   width: 150px;
   height: 180px;
   border: 1px solid black;
+  perspective: 500px;
 
-  > div {
+  .card {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: ${(p) => (p.activated ? 'lightblue' : '#9ecf9e')};
     width: 130px;
     height: 160px;
-    transform: rotateY(0);
+    transform-style: preserve-3d;
     transition: transform 300ms;
 
-    > p {
-      font-size: 8rem;
-      line-height: 2;
-      margin: 0;
+    .face {
+      position: absolute;
+      color: #fff;
+      text-align: center;
+      height: 100%;
+      width: 100%;
+      backface-visibility: hidden;
     }
+
+    .front {
+      background: #f00;
+    }
+
+    .back {
+      background: var(--mango);
+      transform: rotateY(180deg);
+    }
+
+
   }
 
-  :hover div {
+  &:hover .card {
     transform: rotateY(180deg);
-
   }
-
 `;
 
-export const Box = styled.div`
-`;
+export const Box = styled.div``;
