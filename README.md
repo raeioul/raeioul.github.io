@@ -21,6 +21,7 @@
 - [ ] move state to Redux store
 - [ ] add persistence
 - [ ] restyling
+- [ ] add themes (plants, animals, GoT characters...?)
 - [ ] add tests ;D
 
 ## Bugs
