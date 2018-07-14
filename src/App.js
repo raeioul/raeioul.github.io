@@ -45,12 +45,42 @@ class App extends React.Component<Props, State> {
           'http://cdn0.wideopenpets.com/wp-content/uploads/2018/02/Untitled-design-11-770x405.png',
         isActive: false,
       },
+      {
+        id: '6',
+        image:
+          'https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Kitten_in_Rizal_Park%2C_Manila.jpg/1200px-Kitten_in_Rizal_Park%2C_Manila.jpg',
+        isActive: false,
+      },
+      {
+        id: '7',
+        image:
+          'https://www.godspeedanimalcare.com/images/content/rehabilitation-center/doggie-playcare.jpg',
+        isActive: false,
+      },
+      {
+        id: '8',
+        image:
+          'https://www.zoopraha.cz/images/stavby-expozice/Ostrov_lemuru.jpg',
+        isActive: false,
+      },
+      {
+        id: '9',
+        image:
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbhh3OAq-MEt992I4kTute1hd8FUsc1cjqjKHOZrWkihw8M8aq',
+        isActive: false,
+      },
+      {
+        id: '10',
+        image:
+          'http://cdn0.wideopenpets.com/wp-content/uploads/2018/02/Untitled-design-11-770x405.png',
+        isActive: false,
+      },
     ],
   };
 
   componentDidUpdate() {
     if (this.state.activeCards >= 2) {
-      setTimeout(this.deactivateAllCards, 2000);
+      setTimeout(this.deactivateAllCards, 1000);
     }
   }
 
