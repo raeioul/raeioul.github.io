@@ -17,6 +17,8 @@ export const Wrapper = styled.div`
     font-size: 8rem;
     width: 130px;
     height: 160px;
+    user-select: none;
+    cursor: pointer;
     transform: ${(p) => (p.activated ? 'rotateY(180deg)' : 'rotateY(0)')};
     transform-style: preserve-3d;
     transition: transform 300ms;

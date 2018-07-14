@@ -1,5 +1,11 @@
 # Find the Pair
 
+## Tools Used:
+  - React 16.4
+  - Styled Components
+  - Flow (static type checker)
+  - ESLint
+
 ## ToDo
 
 - [x] create a sandbox Square component with div that will rotate in x axis on click event - each side should have a different color
@@ -11,3 +17,4 @@
 - [ ] make it fully responsive
 - [ ] move state to Redux store
 - [ ] add persistence
+- [ ] add tests ;D
