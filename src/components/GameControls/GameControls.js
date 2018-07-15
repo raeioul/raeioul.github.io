@@ -1,5 +1,6 @@
 // @flow
 import React from 'react';
+import { Wrapper, Label, Select, Reset } from './GameControls.styles';
 
 type Props = {
   boardSize: number,
@@ -9,11 +10,11 @@ type Props = {
 
 const GameBoardInputs = (props: Props) => {
   return (
-    <div>
-      <label id="bord-size" htmlFor="board-size">
-        Board Size
-      </label>
-      <select
+    <Wrapper>
+      <Label id="bord-size" htmlFor="board-size">
+        Board Size:
+      </Label>
+      <Select
         name="board-size"
         value={props.boardSize}
         onChange={props.resizeBoard}
@@ -23,11 +24,11 @@ const GameBoardInputs = (props: Props) => {
         <option value="16">16</option>
         <option value="24">24</option>
         <option value="32">32</option>
-      </select>
-      <button type="submit" onClick={props.resetBoard}>
-        Reset
-      </button>
-    </div>
+      </Select>
+      <Reset type="submit" onClick={props.resetBoard}>
+        Reset Game
+      </Reset>
+    </Wrapper>
   );
 };
 

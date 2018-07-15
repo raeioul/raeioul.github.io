@@ -8,6 +8,11 @@ export const Wrapper = styled.div`
   margin: 3rem;
 `;
 
+export const MainHeader = styled.h1`
+  font-size: 8rem;
+  margin: 3rem 0;
+`;
+
 export const SuccessWrapper = styled.div`
   display: flex;
   flex-direction: column;

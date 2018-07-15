@@ -25,11 +25,24 @@ export const Card = styled.div`
     font-size: 8rem;
     width: 130px;
     height: 160px;
+    border: ${(p) => (p.matched && '2px dotted transparent')};
+    border-radius: 5px;
     user-select: none;
     cursor: ${(p) => (!p.matched && 'pointer')};
     transform: ${(p) => shoudlYRotate(p)};
     transform-style: preserve-3d;
     transition: transform 300ms;
+    animation: ${(p) => (p.matched && 'showBorder')} 3000ms ease-in-out forwards;
+
+    :after {
+      content: '\\2606';
+      color: var(--mango);
+    }
+
+    @keyframes showBorder {
+      from { border-color: transparent; }
+      to { border-color: var(--mango); }
+    }
 `;
 
 const Face = css`
@@ -67,7 +80,6 @@ export const Front = styled.div`
 
 export const Back = styled.div`
   ${Face}
-
   background-color: var(--mango);
   background-image: url("${(p) => p.bgImg}");
   background-size: cover;

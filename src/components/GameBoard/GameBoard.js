@@ -20,7 +20,7 @@ const GameBoard = (props: Props) => {
 
   return (
     <Wrapper>
-      {props.cards.length > 0 ? cards : <h3>Choose boad&#39;s size:</h3>}
+      {props.cards.length > 0 ? cards : <h2>Choose boad&#39;s size</h2>}
     </Wrapper>
   );
 };

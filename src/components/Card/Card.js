@@ -17,6 +17,7 @@ const Square = (props: Props) => {
         matched={props.matched}
         activated={props.activated}
       >
+        <span />
         <Front>
           <h4>?</h4>
         </Front>

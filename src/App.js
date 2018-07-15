@@ -3,12 +3,13 @@ import * as React from 'react';
 import _ from 'lodash';
 import {
   Wrapper,
+  MainHeader,
   SuccessWrapper,
   Success,
   SuccessButton,
 } from './App.styles';
 
-import GameBoardInputs from './components/GameBoardInputs/GameBoardInputs';
+import GameControls from './components/GameControls/GameControls';
 import GameBoard from './components/GameBoard/GameBoard';
 
 import img1 from './assets/images/1.jpg';
@@ -219,12 +220,12 @@ class App extends React.Component<Props, State> {
   render() {
     return (
       <Wrapper>
-        <h1>Find the Pair</h1>
+        <MainHeader>Find the Pair</MainHeader>
         <h4>
           No Tries: {this.state.noTries}; No Matched: {this.state.noMatched}
         </h4>
 
-        <GameBoardInputs
+        <GameControls
           boardSize={this.state.boardSize}
           resizeBoard={this.handleBoardSizeChange}
           resetBoard={this.handleResetBoard}
