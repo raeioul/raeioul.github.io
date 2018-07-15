@@ -1,14 +1,22 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  background: yellow;
+`;
+
+export const Board = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   width: 150px;
   height: 180px;
   perspective: 500px;
+  background: green;
+`;
 
-  .card {
+export const Card = styled.div`
     position: relative;
     display: flex;
     justify-content: center;
@@ -22,36 +30,35 @@ export const Wrapper = styled.div`
     transform: ${(p) => (p.activated || p.matched ? 'rotateY(180deg)' : 'rotateY(0)')};
     transform-style: preserve-3d;
     transition: transform 300ms;
+`;
 
-    .face {
-      position: absolute;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 5px;
-      box-shadow: 0 0 15px 0 #999;
-      height: 100%;
-      width: 100%;
-      backface-visibility: hidden;
-    }
+const Face = css`
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 0 0 15px 0 #999;
+  height: 100%;
+  width: 100%;
+  backface-visibility: hidden;
+`;
 
-    .front {
-      background: var(--mango);
+export const Front = styled.div`
+  ${Face} background: var(--mango);
 
-      h4 {
-        color: #fff;
-      }
-    }
-
-    .back {
-      background-color: var(--mango);
-      background-image: url("${(p) => p.bgImg}");
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center center;
-      transform: rotateY(180deg);
-    }    
+  h4 {
+    color: #fff;
   }
 `;
 
-export const Box = styled.div``;
+export const Back = styled.div`
+  ${Face}
+
+  background-color: var(--mango);
+  background-image: url("${(p) => p.bgImg}");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transform: rotateY(180deg);
+`;

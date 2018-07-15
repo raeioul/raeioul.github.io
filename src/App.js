@@ -1,7 +1,13 @@
 // @flow
 import * as React from 'react';
 import _ from 'lodash';
-import { Wrapper, Container, SuccessWrapper, Success, SuccessButton } from './App.styles';
+import {
+  Wrapper,
+  Container,
+  SuccessWrapper,
+  Success,
+  SuccessButton,
+} from './App.styles';
 
 import Square from './components/Square';
 import img1 from './assets/images/1.jpg';
@@ -14,9 +20,13 @@ import img6 from './assets/images/6.jpg';
 type Props = {};
 
 type State = {
+  boardSize: number,
+  boardChanged: boolean,
   activeCards: Array<number>,
   images: Array<string>,
   cards: Array<?Object>,
+  noTries: number,
+  noMatched: number,
 };
 
 class App extends React.Component<Props, State> {
