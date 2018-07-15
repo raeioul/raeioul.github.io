@@ -30,6 +30,7 @@ export const Select = styled.select`
   border: 1px solid var(--mango);
   border-radius: 5px;
   height: 40px;
+  cursor: pointer;
   outline: none;
 `;
 
@@ -40,6 +41,7 @@ export const Reset = styled.button`
   border-radius: 5px;
   height: 40px;
   padding: 0 2rem;
+  cursor: pointer;
   outline: none;
   transition: all 300ms ease-in-out;
 

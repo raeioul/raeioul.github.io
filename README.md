@@ -15,6 +15,7 @@
 - [x] create random array of cards (odd number, 2 for each selected image)
 - [x] allow player to choose game's board size
 - [x] add reset button
+- [ ] add animation for SuccessModal (to appear & disappear)
 - [ ] add timer
 - [ ] add score table (top x)
 - [ ] make it fully responsive

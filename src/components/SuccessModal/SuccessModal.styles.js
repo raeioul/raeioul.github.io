@@ -4,6 +4,7 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
 `;
 
 export const Backdrop = styled.div`
@@ -29,6 +30,19 @@ export const SuccessWrapper = styled.div`
   padding: 5rem;
   border-radius: 5px;
   z-index: 1;
+
+  animation: fade-in 500ms ease-in-out forwards;
+
+  @keyframes fade-in {
+    from {
+      transform: translateY(-300px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
 `;
 
 export const Success = styled.h2`
@@ -47,4 +61,10 @@ export const SuccessButton = styled.button`
   width: 200px;
   margin: 2rem 0;
   cursor: pointer;
+  transition: all 300ms ease-in-out;
+
+  :hover {
+    background: var(--mango);
+    color: #fff;
+  }
 `;
