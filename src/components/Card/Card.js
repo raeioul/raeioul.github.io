@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import { Board, Card, Front, Back } from './Square.styles';
+import { Board, Card, Front, Back } from './Card.styles';
 
 type Props = {
   front: string,

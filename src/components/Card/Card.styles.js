@@ -9,11 +9,12 @@ export const Board = styled.div`
   perspective: 500px;
 `;
 
-// function hideCard(p) {
-//   const display = setTimeout(() => 'none', 1500)
-
-//   return display;
-// }
+const shoudlRotate = (props) => {
+  if (props.activated || props.matched) {
+    return 'rotateY(180deg)';
+  }
+  return 'rotateY(0)';
+};
 
 export const Card = styled.div`
     position: relative;
@@ -27,6 +28,7 @@ export const Card = styled.div`
     user-select: none;
     cursor: ${(p) => (!p.matched && 'pointer')};
     transform: ${(p) => (p.activated || p.matched ? 'rotateY(180deg)' : 'rotateY(0)')};
+    transform: ${(p) => shoudlRotate(p)};
     transform-style: preserve-3d;
     transition: transform 300ms;
 `;

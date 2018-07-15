@@ -9,7 +9,7 @@ import {
   SuccessButton,
 } from './App.styles';
 
-import Square from './components/Square';
+import Card from './components/Card/Card';
 import img1 from './assets/images/1.jpg';
 import img2 from './assets/images/2.jpg';
 import img3 from './assets/images/3.jpg';
@@ -217,7 +217,7 @@ class App extends React.Component<Props, State> {
 
   renderCards = () => {
     return this.state.cards.map((card) => (
-      <Square
+      <Card
         key={card.id}
         clicked={() => this.handleCardActivation(card.id)}
         activated={card.isActive}
