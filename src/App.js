@@ -1,16 +1,11 @@
 // @flow
 import * as React from 'react';
 import _ from 'lodash';
-import {
-  Wrapper,
-  MainHeader,
-  SuccessWrapper,
-  Success,
-  SuccessButton,
-} from './App.styles';
+import { Wrapper, MainHeader } from './App.styles';
 
 import GameControls from './components/GameControls/GameControls';
 import GameBoard from './components/GameBoard/GameBoard';
+import SuccessModal from './components/SuccessModal/SuccessModal';
 
 import img1 from './assets/images/1.jpg';
 import img2 from './assets/images/2.jpg';
@@ -29,7 +24,9 @@ import img14 from './assets/images/14.jpg';
 import img15 from './assets/images/15.jpg';
 import img16 from './assets/images/16.jpg';
 
-type Props = {};
+type Props = {
+
+};
 
 type State = {
   boardSize: number,
@@ -96,7 +93,7 @@ class App extends React.Component<Props, State> {
     }));
   };
 
-  shuffleImages = (boardSize) => {
+  shuffleImages = (boardSize: number) => {
     // Shuffle initial array and make a slice needed
     // to populate board of specified size
     let imgArray = _.shuffle(this.state.images);
@@ -218,6 +215,10 @@ class App extends React.Component<Props, State> {
   };
 
   render() {
+    const playerWon =
+      this.state.noMatched === this.state.boardSize / 2 &&
+      this.state.boardSize > 0;
+
     return (
       <Wrapper>
         <MainHeader>Find the Pair</MainHeader>
@@ -236,15 +237,7 @@ class App extends React.Component<Props, State> {
           cards={this.state.cards}
         />
 
-        {this.state.noMatched === this.state.boardSize / 2 &&
-          this.state.boardSize > 0 && (
-            <SuccessWrapper>
-              <Success>You Won!</Success>
-              <SuccessButton type="submit" onClick={this.handleResetBoard}>
-                Play Again!
-              </SuccessButton>
-            </SuccessWrapper>
-        )}
+        {playerWon && <SuccessModal resetBoard={this.handleResetBoard} />}
       </Wrapper>
     );
   }

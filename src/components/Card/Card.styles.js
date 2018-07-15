@@ -25,25 +25,27 @@ export const Card = styled.div`
   font-size: 8rem;
   width: 130px;
   height: 160px;
-  border: ${(p) => p.matched && '2px dotted transparent'};
+  border: 2px dotted ${(p) => (p.matched ? 'var(--mango)' : 'transparent')};
   border-radius: 5px;
   user-select: none;
   cursor: ${(p) => !p.matched && 'pointer'};
   transform: ${(p) => shoudlYRotate(p)};
   transform-style: preserve-3d;
   transition: transform 300ms;
-  animation: ${(p) => p.matched && 'showBorder'} 3000ms ease-in-out forwards;
+  animation: ${(p) => p.matched && 'showBorder'} 1000ms ease-in-out forwards;
 
   :after {
     content: '\\2606';
-    /* color: var(--mango); */
     color: ${(p) => (p.matched ? 'var(--mango)' : 'transparent')};
-    transition: color 3000ms ease-in-out;
   }
 
   @keyframes showBorder {
-    from { border-color: transparent; }
-    to { border-color: var(--mango); }
+    from {
+      border-color: transparent;
+    }
+    to {
+      border-color: var(--mango);
+    }
   }
 `;
 
