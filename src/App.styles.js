@@ -11,4 +11,5 @@ export const Wrapper = styled.div`
 export const MainHeader = styled.h1`
   font-size: 8rem;
   margin: 3rem 0;
+  text-align: center;
 `;

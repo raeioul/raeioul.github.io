@@ -28,7 +28,8 @@ export const Select = styled.select`
   background: none;
   color: var(--dust);
   border: 1px solid var(--mango);
-  height: 100%;
+  border-radius: 5px;
+  height: 40px;
   outline: none;
 `;
 
@@ -36,5 +37,14 @@ export const Reset = styled.button`
   background: none;
   color: var(--dust);
   border: 1px solid var(--mango);
+  border-radius: 5px;
+  height: 40px;
+  padding: 0 2rem;
   outline: none;
+  transition: all 300ms ease-in-out;
+
+  :hover {
+    color: #fff;
+    background: var(--mango);
+  }
 `;

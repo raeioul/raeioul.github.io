@@ -222,8 +222,8 @@ class App extends React.Component<Props, State> {
     return (
       <Wrapper>
         <MainHeader>Find the Pair</MainHeader>
-        <h4>
-          No Tries: {this.state.noTries}; No Matched: {this.state.noMatched}
+        <h4 style={{ color: 'var(--dust)' }}>
+          Tries: {this.state.noTries} :: Matched: {this.state.noMatched}
         </h4>
 
         <GameControls
