@@ -55,7 +55,7 @@ const Face = css`
   justify-content: center;
   align-items: center;
   border-radius: 5px;
-  box-shadow: 0 0 15px 0 #999;
+  box-shadow: 0 0 25px 0 #999;
   height: 100%;
   width: 100%;
   backface-visibility: hidden;

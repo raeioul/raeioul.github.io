@@ -1,10 +1,34 @@
 import styled from 'styled-components';
 
+export const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Backdrop = styled.div`
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.7);
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+`;
+
 export const SuccessWrapper = styled.div`
+  position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  background: #fff;
+  padding: 5rem;
+  border-radius: 5px;
+  z-index: 1;
 `;
 
 export const Success = styled.h2`
@@ -21,5 +45,6 @@ export const SuccessButton = styled.button`
   font-size: 3rem;
   height: 50px;
   width: 200px;
+  margin: 2rem 0;
   cursor: pointer;
 `;

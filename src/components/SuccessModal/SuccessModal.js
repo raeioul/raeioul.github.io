@@ -1,6 +1,12 @@
 // @flow
 import React from 'react';
-import { SuccessWrapper, Success, SuccessButton } from './SuccessModal.styles';
+import {
+  Wrapper,
+  Backdrop,
+  SuccessWrapper,
+  Success,
+  SuccessButton,
+} from './SuccessModal.styles';
 
 type Props = {
   resetBoard: (void) => void,
@@ -8,12 +14,15 @@ type Props = {
 
 const SuccessModal = (props: Props) => {
   return (
-    <SuccessWrapper>
-      <Success>You Won!</Success>
-      <SuccessButton type="submit" onClick={props.resetBoard}>
-        Play Again!
-      </SuccessButton>
-    </SuccessWrapper>
+    <Wrapper>
+      <Backdrop />
+      <SuccessWrapper>
+        <Success>You Won!</Success>
+        <SuccessButton type="submit" onClick={props.resetBoard}>
+          Play Again!
+        </SuccessButton>
+      </SuccessWrapper>
+    </Wrapper>
   );
 };
 
