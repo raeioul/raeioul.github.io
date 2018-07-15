@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
+  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
-
+  width: 100%;
 `;
 
 export const Backdrop = styled.div`
@@ -26,6 +27,8 @@ export const SuccessWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  max-width: 550px;
+  text-align: center;
   background: #fff;
   padding: 5rem;
   border-radius: 5px;
