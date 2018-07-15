@@ -1,10 +1,19 @@
 # Find the Pair
 
-## Tools Used:
-  - React 16.4
-  - Styled Components
-  - Flow (static type checker)
-  - ESLint
+http://pairs.wojtekdudek.xyz
+
+## Hosted
+
+- DigitalOcean VPS
+- Nginx
+- http-server
+
+## Tools Used
+
+- React 16.4
+- Styled Components
+- Flow (static type checker)
+- ESLint
 
 ## ToDo
 
