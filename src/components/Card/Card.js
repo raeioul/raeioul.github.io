@@ -1,9 +1,8 @@
 // @flow
 import React from 'react';
-import { Board, Card, Front, Back } from './Card.styles';
+import { Wrapper, Card, Front, Back } from './Card.styles';
 
 type Props = {
-  front: string,
   image: string,
   activated: boolean,
   matched: boolean,
@@ -12,18 +11,18 @@ type Props = {
 
 const Square = (props: Props) => {
   return (
-    <Board>
+    <Wrapper>
       <Card
         onClick={props.clicked}
         matched={props.matched}
         activated={props.activated}
       >
         <Front>
-          <h4>{props.front}</h4>
+          <h4>?</h4>
         </Front>
         <Back bgImg={props.image} matched={props.matched} />
       </Card>
-    </Board>
+    </Wrapper>
   );
 };
 

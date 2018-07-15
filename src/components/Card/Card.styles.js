@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const Board = styled.div`
+export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,7 +9,7 @@ export const Board = styled.div`
   perspective: 500px;
 `;
 
-const shoudlRotate = (props) => {
+const shoudlYRotate = (props) => {
   if (props.activated || props.matched) {
     return 'rotateY(180deg)';
   }
@@ -27,8 +27,7 @@ export const Card = styled.div`
     height: 160px;
     user-select: none;
     cursor: ${(p) => (!p.matched && 'pointer')};
-    transform: ${(p) => (p.activated || p.matched ? 'rotateY(180deg)' : 'rotateY(0)')};
-    transform: ${(p) => shoudlRotate(p)};
+    transform: ${(p) => shoudlYRotate(p)};
     transform-style: preserve-3d;
     transition: transform 300ms;
 `;
@@ -43,13 +42,17 @@ const Face = css`
   height: 100%;
   width: 100%;
   backface-visibility: hidden;
-  opacity: 1;
-
-  animation: ${(p) => (p.matched && 'fadeout')} 1s ease-in-out 500ms forwards;
+  animation: ${(p) => (p.matched && 'fadeout')} 1s ease-in-out 300ms forwards;
 
   @keyframes fadeout {
-    from { opacity: 1; }
-    to { opacity: 0; }
+    from {
+      transform: rotateY(180deg) translateY(0) scale(1);
+      opacity: 1;
+    }
+    to {
+      transform: rotateY(180deg) translateY(-30px) scale(1.1);
+      opacity: 0;
+    }
   }
 `;
 

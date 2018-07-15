@@ -3,13 +3,14 @@ import * as React from 'react';
 import _ from 'lodash';
 import {
   Wrapper,
-  Container,
   SuccessWrapper,
   Success,
   SuccessButton,
 } from './App.styles';
 
-import Card from './components/Card/Card';
+import GameBoardInputs from './components/GameBoardInputs/GameBoardInputs';
+import GameBoard from './components/GameBoard/GameBoard';
+
 import img1 from './assets/images/1.jpg';
 import img2 from './assets/images/2.jpg';
 import img3 from './assets/images/3.jpg';
@@ -215,19 +216,6 @@ class App extends React.Component<Props, State> {
     );
   };
 
-  renderCards = () => {
-    return this.state.cards.map((card) => (
-      <Card
-        key={card.id}
-        clicked={() => this.handleCardActivation(card.id)}
-        activated={card.isActive}
-        matched={card.matched}
-        front="?"
-        image={card.image}
-      />
-    ));
-  };
-
   render() {
     return (
       <Wrapper>
@@ -235,31 +223,17 @@ class App extends React.Component<Props, State> {
         <h4>
           No Tries: {this.state.noTries}; No Matched: {this.state.noMatched}
         </h4>
-        <div>
-          <label id="bord-size" htmlFor="board-size">
-            Board Size
-          </label>
-          <select
-            name="board-size"
-            value={this.state.boardSize}
-            onChange={this.handleBoardSizeChange}
-          >
-            <option value="0">-</option>
-            <option value="8">8</option>
-            <option value="16">16</option>
-            <option value="24">24</option>
-            <option value="32">32</option>
-          </select>
-          <button type="submit" onClick={this.handleResetBoard}>
-            Reset
-          </button>
-        </div>
 
-        <Container>
-          {this.state.cards.length > 0 ?
-            this.renderCards() :
-            <h3>Choose boad&#39;s size:</h3>}
-        </Container>
+        <GameBoardInputs
+          boardSize={this.state.boardSize}
+          resizeBoard={this.handleBoardSizeChange}
+          resetBoard={this.handleResetBoard}
+        />
+
+        <GameBoard
+          cardClicked={this.handleCardActivation}
+          cards={this.state.cards}
+        />
 
         {this.state.noMatched === this.state.boardSize / 2 &&
           this.state.boardSize > 0 && (

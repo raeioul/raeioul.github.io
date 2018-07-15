@@ -14,7 +14,7 @@
 - [x] and only two images may be activated at the same time
 - [x] create random array of cards (odd number, 2 for each selected image)
 - [x] allow player to choose game's board size
-- [ ] add reset button
+- [x] add reset button
 - [ ] add timer
 - [ ] add score table (top x)
 - [ ] make it fully responsive
@@ -26,6 +26,6 @@
 
 ## Bugs
 
-- [ ] - number of tries is incremented after timeout (hence the delay) - should be increased immediately
-- [ ] clicking on matched images multiple times increments "matched" counter
-- [x] - successfull match must reset timeout
+- [ ] - ~~~number of tries is incremented after timeout (hence the delay) - should be increased immediately~~~
+- [x] - ~~~clicking on matched images multiple times increments "matched" counter~~~
+- [x] - ~~~successfull match must reset timeout~~~

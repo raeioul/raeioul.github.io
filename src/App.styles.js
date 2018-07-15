@@ -8,17 +8,6 @@ export const Wrapper = styled.div`
   margin: 3rem;
 `;
 
-export const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 1200px;
-`;
-
-export const Board = styled.div`
-  background: yellow;
-`;
-
 export const SuccessWrapper = styled.div`
   display: flex;
   flex-direction: column;
