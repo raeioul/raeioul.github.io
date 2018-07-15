@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import { Wrapper, Board, Card, Front, Back } from './Square.styles';
+import { Board, Card, Front, Back } from './Square.styles';
 
 type Props = {
   front: string,
@@ -12,20 +12,18 @@ type Props = {
 
 const Square = (props: Props) => {
   return (
-    <Wrapper>
-      <Board>
-        <Card
-          onClick={props.clicked}
-          matched={props.matched}
-          activated={props.activated}
-        >
-          <Front>
-            <h4>{props.front}</h4>
-          </Front>
-          <Back bgImg={props.image} />
-        </Card>
-      </Board>
-    </Wrapper>
+    <Board>
+      <Card
+        onClick={props.clicked}
+        matched={props.matched}
+        activated={props.activated}
+      >
+        <Front>
+          <h4>{props.front}</h4>
+        </Front>
+        <Back bgImg={props.image} matched={props.matched} />
+      </Card>
+    </Board>
   );
 };
 

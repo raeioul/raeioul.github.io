@@ -16,6 +16,16 @@ import img3 from './assets/images/3.jpg';
 import img4 from './assets/images/4.png';
 import img5 from './assets/images/5.jpg';
 import img6 from './assets/images/6.jpg';
+import img7 from './assets/images/7.jpg';
+import img8 from './assets/images/8.jpg';
+import img9 from './assets/images/9.jpeg';
+import img10 from './assets/images/10.jpg';
+import img11 from './assets/images/11.jpg';
+import img12 from './assets/images/12.jpg';
+import img13 from './assets/images/13.jpg';
+import img14 from './assets/images/14.jpg';
+import img15 from './assets/images/15.jpg';
+import img16 from './assets/images/16.jpg';
 
 type Props = {};
 
@@ -34,7 +44,24 @@ class App extends React.Component<Props, State> {
     boardSize: 4,
     boardChanged: false,
     activeCards: [],
-    images: [img1, img2, img3, img4, img5, img6],
+    images: [
+      img1,
+      img2,
+      img3,
+      img4,
+      img5,
+      img6,
+      img7,
+      img8,
+      img9,
+      img10,
+      img11,
+      img12,
+      img13,
+      img14,
+      img15,
+      img16,
+    ],
     cards: [],
     noTries: 0,
     noMatched: 0,
@@ -114,7 +141,13 @@ class App extends React.Component<Props, State> {
       (card) => card.id === cardId,
     )[0];
 
-    if (this.state.activeCards.length >= 2 || selectedCard.isActive) {
+    // Activate only 2 incactive and not matched cards
+    // or do nothing
+    if (
+      this.state.activeCards.length >= 2 ||
+      selectedCard.isActive ||
+      selectedCard.matched
+    ) {
       return;
     }
 
@@ -135,6 +168,7 @@ class App extends React.Component<Props, State> {
     const updatedCards = this.state.cards.map((card) => {
       const updatedCard = card;
       const isActivated = this.state.activeCards.includes(updatedCard.image);
+
       if (isActivated) {
         updatedCard.matched = true;
       }
@@ -142,11 +176,19 @@ class App extends React.Component<Props, State> {
       return updatedCard;
     });
 
+    // TODO: Fix counting matched pairs.
+    // Previously I simply incremented noMatched value, but it was a source
+    // of a bug - every time matched cards were clicked, counter was incremented
+    const updatedNoMatched = updatedCards.reduce(
+      (acu, card) => acu + card.matched,
+      0,
+    );
+
     this.setState(
       (prevState) => ({
         cards: updatedCards,
         activeCards: [],
-        noMatched: prevState.noMatched + 1,
+        noMatched: updatedNoMatched / 2,
       }),
       this.deactivateAllCards,
     );
@@ -203,25 +245,30 @@ class App extends React.Component<Props, State> {
             onChange={this.handleBoardSizeChange}
           >
             <option value="0">-</option>
-            <option value="4">4</option>
-            <option value="6">6</option>
             <option value="8">8</option>
-            <option value="12">12</option>
+            <option value="16">16</option>
+            <option value="24">24</option>
+            <option value="32">32</option>
           </select>
           <button type="submit" onClick={this.handleResetBoard}>
             Reset
           </button>
         </div>
 
-        <Container>{this.state.cards && this.renderCards()}</Container>
+        <Container>
+          {this.state.cards.length > 0 ?
+            this.renderCards() :
+            <h3>Choose boad&#39;s size:</h3>}
+        </Container>
 
-        {this.state.noMatched === this.state.boardSize / 2 && (
-          <SuccessWrapper>
-            <Success>You Won!</Success>
-            <SuccessButton type="submit" onClick={this.handleResetBoard}>
-              Play Again!
-            </SuccessButton>
-          </SuccessWrapper>
+        {this.state.noMatched === this.state.boardSize / 2 &&
+          this.state.boardSize > 0 && (
+            <SuccessWrapper>
+              <Success>You Won!</Success>
+              <SuccessButton type="submit" onClick={this.handleResetBoard}>
+                Play Again!
+              </SuccessButton>
+            </SuccessWrapper>
         )}
       </Wrapper>
     );

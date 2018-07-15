@@ -1,11 +1,5 @@
 import styled, { css } from 'styled-components';
 
-export const Wrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  background: yellow;
-`;
-
 export const Board = styled.div`
   display: flex;
   justify-content: center;
@@ -13,8 +7,13 @@ export const Board = styled.div`
   width: 150px;
   height: 180px;
   perspective: 500px;
-  background: green;
 `;
+
+// function hideCard(p) {
+//   const display = setTimeout(() => 'none', 1500)
+
+//   return display;
+// }
 
 export const Card = styled.div`
     position: relative;
@@ -26,7 +25,7 @@ export const Card = styled.div`
     width: 130px;
     height: 160px;
     user-select: none;
-    cursor: pointer;
+    cursor: ${(p) => (!p.matched && 'pointer')};
     transform: ${(p) => (p.activated || p.matched ? 'rotateY(180deg)' : 'rotateY(0)')};
     transform-style: preserve-3d;
     transition: transform 300ms;
@@ -42,10 +41,19 @@ const Face = css`
   height: 100%;
   width: 100%;
   backface-visibility: hidden;
+  opacity: 1;
+
+  animation: ${(p) => (p.matched && 'fadeout')} 1s ease-in-out 500ms forwards;
+
+  @keyframes fadeout {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
 `;
 
 export const Front = styled.div`
-  ${Face} background: var(--mango);
+  ${Face}
+  background: var(--mango);
 
   h4 {
     color: #fff;
