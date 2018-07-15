@@ -5,6 +5,7 @@ import { Wrapper } from './GameBoard.styles';
 
 type Props = {
   cards: Array<Object>,
+  cardClicked: (string) => void,
 };
 
 const GameBoard = (props: Props) => {
@@ -19,7 +20,7 @@ const GameBoard = (props: Props) => {
   ));
 
   return (
-    <Wrapper>
+    <Wrapper cardNumber={props.cards.length}>
       {props.cards.length > 0 ? cards : <h2>Choose boad&#39;s size</h2>}
     </Wrapper>
   );

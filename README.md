@@ -26,6 +26,7 @@
 
 ## Bugs
 
-- [ ] - ~~~number of tries is incremented after timeout (hence the delay) - should be increased immediately~~~
+- [ ] - number of tries is incremented after timeout (hence the delay) - should be increased immediately
+- [ ] - success modal needs to be centered vertically (now its position depends on board size)
 - [x] - ~~~clicking on matched images multiple times increments "matched" counter~~~
 - [x] - ~~~successfull match must reset timeout~~~

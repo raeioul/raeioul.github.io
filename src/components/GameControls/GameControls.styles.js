@@ -5,7 +5,6 @@ export const Wrapper = styled.div`
   flex-direction: column;
   margin: 1rem 0;
   font-size: 2rem;
-  height: 50px;
 
   > * {
     margin-bottom: 1rem;
@@ -29,6 +28,7 @@ export const Select = styled.select`
   background: none;
   color: var(--dust);
   border: 1px solid var(--mango);
+  height: 100%;
   outline: none;
 `;
 

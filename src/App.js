@@ -33,14 +33,14 @@ type State = {
   boardChanged: boolean,
   activeCards: Array<number>,
   images: Array<string>,
-  cards: Array<?Object>,
+  cards: Array<Object | null>,
   noTries: number,
   noMatched: number,
 };
 
 class App extends React.Component<Props, State> {
   state = {
-    boardSize: 4,
+    boardSize: 8,
     boardChanged: false,
     activeCards: [],
     images: [
