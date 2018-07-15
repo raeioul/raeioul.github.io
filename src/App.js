@@ -222,7 +222,7 @@ class App extends React.Component<Props, State> {
     return (
       <Wrapper>
         <MainHeader>Find the Pair</MainHeader>
-        <h4 style={{ color: 'var(--dust)' }}>
+        <h4 style={{ color: 'var(--dust)', fontSize: '2rem' }}>
           Tries: {this.state.noTries} :: Matched: {this.state.noMatched}
         </h4>
 
