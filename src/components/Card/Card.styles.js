@@ -76,8 +76,13 @@ const Face = css`
 export const Front = styled.div`
   ${Face} background: var(--mango);
 
-  h4 {
+  :after {
+    content: "?";
     color: #fff;
+    font-family: 'Lobster', cursive;
+    font-weight: initial;
+    border: 2px solid #fff;
+    padding: 2rem 3rem;
   }
 `;
 

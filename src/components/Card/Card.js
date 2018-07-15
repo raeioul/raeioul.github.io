@@ -18,9 +18,7 @@ const Square = (props: Props) => {
         activated={props.activated}
       >
         <span />
-        <Front>
-          <h4>?</h4>
-        </Front>
+        <Front />
         <Back bgImg={props.image} matched={props.matched} />
       </Card>
     </Wrapper>
