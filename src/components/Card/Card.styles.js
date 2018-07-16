@@ -73,7 +73,7 @@ const Face = css`
   }
 `;
 
-export const Front = styled.div`
+export const Back = styled.div`
   ${Face} background: var(--mango);
 
   :after {
@@ -86,10 +86,10 @@ export const Front = styled.div`
   }
 `;
 
-export const Back = styled.div`
+export const Front = styled.div`
   ${Face}
   background-color: var(--mango);
-  background-image: url("${(p) => p.bgImg}");
+  background-image: url("${(p) => p.image}");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;

@@ -18,8 +18,8 @@ const Square = (props: Props) => {
         activated={props.activated}
       >
         <span />
-        <Front />
-        <Back bgImg={props.image} matched={props.matched} />
+        <Back matched={props.matched} />
+        <Front image={props.image} matched={props.matched} />
       </Card>
     </Wrapper>
   );
