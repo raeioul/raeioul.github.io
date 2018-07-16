@@ -59,6 +59,8 @@ const Face = css`
   height: 100%;
   width: 100%;
   backface-visibility: hidden;
+  background: ${(p) => (p.matched ? 'transparent' : 'var(--mango)')};
+  background: ${(p) => (p.matched ? 'transparent' : 'var(--mango)')};
   animation: ${(p) => p.matched && 'fadeout'} 1s ease-in-out 300ms forwards;
 
   @keyframes fadeout {
@@ -75,7 +77,6 @@ const Face = css`
 
 export const Back = styled.div`
   ${Face}
-  background: ${(p) => (p.matched ? 'transparent' : 'var(--mango)')};
 
   :after {
     content: "?";
@@ -84,13 +85,11 @@ export const Back = styled.div`
     font-weight: initial;
     border: 2px solid #fff;
     padding: 2rem 3rem;
-    transition: background 1ms linear 300ms;
   }
 `;
 
 export const Front = styled.div`
   ${Face}
-  background-color: var(--mango);
   background-image: url("${(p) => p.image}");
   background-size: cover;
   background-repeat: no-repeat;
