@@ -74,7 +74,8 @@ const Face = css`
 `;
 
 export const Back = styled.div`
-  ${Face} background: var(--mango);
+  ${Face}
+  background: ${(p) => (p.matched ? 'transparent' : 'var(--mango)')};
 
   :after {
     content: "?";
@@ -83,6 +84,7 @@ export const Back = styled.div`
     font-weight: initial;
     border: 2px solid #fff;
     padding: 2rem 3rem;
+    transition: background 1ms linear 300ms;
   }
 `;
 
