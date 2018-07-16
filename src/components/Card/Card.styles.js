@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
   perspective: 500px;
 `;
 
-const shoudlYRotate = (props) => {
+const shoudlYRotate = props => {
   if (props.activated || props.matched) {
     return 'rotateY(180deg)';
   }
@@ -25,18 +25,18 @@ export const Card = styled.div`
   font-size: 8rem;
   width: 130px;
   height: 160px;
-  border: 2px dotted ${(p) => (p.matched ? 'var(--mango)' : 'transparent')};
+  border: 2px dotted ${p => (p.matched ? 'var(--mango)' : 'transparent')};
   border-radius: 5px;
   user-select: none;
-  cursor: ${(p) => !p.matched && 'pointer'};
-  transform: ${(p) => shoudlYRotate(p)};
+  cursor: ${p => !p.matched && 'pointer'};
+  transform: ${p => shoudlYRotate(p)};
   transform-style: preserve-3d;
   transition: transform 300ms;
-  animation: ${(p) => p.matched && 'showBorder'} 1000ms ease-in-out forwards;
+  animation: ${p => p.matched && 'showBorder'} 1000ms ease-in-out forwards;
 
   :after {
     content: '\\2606';
-    color: ${(p) => (p.matched ? 'var(--mango)' : 'transparent')};
+    color: ${p => (p.matched ? 'var(--mango)' : 'transparent')};
   }
 
   @keyframes showBorder {
@@ -59,9 +59,11 @@ const Face = css`
   height: 100%;
   width: 100%;
   backface-visibility: hidden;
-  background: ${(p) => (p.matched ? 'transparent' : 'var(--mango)')};
-  background: ${(p) => (p.matched ? 'transparent' : 'var(--mango)')};
-  animation: ${(p) => p.matched && 'fadeout'} 1s ease-in-out 300ms forwards;
+  background: ${p =>
+    p.matched
+      ? 'transparent'
+      : 'linear-gradient(var(--mango), var(--dark-mango) 50%, var(--mango))'};
+  animation: ${p => p.matched && 'fadeout'} 1s ease-in-out 300ms forwards;
 
   @keyframes fadeout {
     from {
@@ -76,10 +78,8 @@ const Face = css`
 `;
 
 export const Back = styled.div`
-  ${Face}
-
-  :after {
-    content: "?";
+  ${Face} :after {
+    content: '?';
     color: #fff;
     font-family: 'Lobster', cursive;
     font-weight: initial;
@@ -90,7 +90,7 @@ export const Back = styled.div`
 
 export const Front = styled.div`
   ${Face}
-  background-image: url("${(p) => p.image}");
+  background-image: url("${p => p.image}");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;

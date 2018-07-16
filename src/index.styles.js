@@ -5,6 +5,7 @@ export default css`
 
   :root {
     --mango: #ffbe00;
+    --dark-mango: #d8a100;
     --dust: #666;
   }
 

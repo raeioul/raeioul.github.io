@@ -37,7 +37,7 @@ module.exports = {
           checkChildContextTypes: false,
         },
       ],
-      'arrow-parens': ['error', 'always'],
+      'arrow-parens': ['error', 'as-needed'],
       'space-before-function-paren': 0,
       'function-paren-newline': ['error', 'consistent'],
       'no-unused-vars': [
@@ -56,5 +56,7 @@ module.exports = {
       'object-curly-newline': ['error', { consistent: true }],
       'operator-linebreak': 0,
       'jsx-a11y/label-has-for': 0,
+      'implicit-arrow-linebreak': 0,
+      'no-confusing-arrow': 0,
     },
   };

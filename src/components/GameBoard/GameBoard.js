@@ -5,11 +5,11 @@ import { Wrapper } from './GameBoard.styles';
 
 type Props = {
   cards: Array<Object>,
-  cardClicked: (string) => void,
+  cardClicked: string => void,
 };
 
 const GameBoard = (props: Props) => {
-  const cards = props.cards.map((card) => (
+  const cards = props.cards.map(card => (
     <Card
       key={card.id}
       clicked={() => props.cardClicked(card.id)}

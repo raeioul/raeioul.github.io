@@ -24,9 +24,7 @@ import img14 from './assets/images/14.jpg';
 import img15 from './assets/images/15.jpg';
 import img16 from './assets/images/16.jpg';
 
-type Props = {
-
-};
+type Props = {};
 
 type State = {
   boardSize: number,
@@ -40,7 +38,7 @@ type State = {
 
 class App extends React.Component<Props, State> {
   state = {
-    boardSize: 8,
+    boardSize: 0,
     boardChanged: false,
     activeCards: [],
     images: [
@@ -86,7 +84,7 @@ class App extends React.Component<Props, State> {
 
   populateBoard = () => {
     const cards = this.createCards();
-    this.setState((prevState) => ({
+    this.setState(prevState => ({
       ...prevState,
       boardChanged: false,
       cards,
@@ -123,10 +121,10 @@ class App extends React.Component<Props, State> {
   };
 
   deactivateAllCards = () => {
-    this.setState((prevState) => ({
+    this.setState(prevState => ({
       ...prevState,
       activeCards: [],
-      cards: prevState.cards.map((card) => {
+      cards: prevState.cards.map(card => {
         const updatedCard = card;
         updatedCard.isActive = false;
         return updatedCard;
@@ -136,9 +134,7 @@ class App extends React.Component<Props, State> {
   };
 
   handleCardActivation = (cardId: string) => {
-    const selectedCard = this.state.cards.filter(
-      (card) => card.id === cardId,
-    )[0];
+    const selectedCard = this.state.cards.filter(card => card.id === cardId)[0];
 
     // Activate only 2 incactive and not matched cards
     // or do nothing
@@ -150,10 +146,10 @@ class App extends React.Component<Props, State> {
       return;
     }
 
-    this.setState((prevState) => ({
+    this.setState(prevState => ({
       ...prevState,
       activeCards: [...prevState.activeCards, selectedCard.image],
-      cards: prevState.cards.map((card) => {
+      cards: prevState.cards.map(card => {
         const updatedCard = card;
         if (updatedCard.id === cardId) {
           updatedCard.isActive = true;
@@ -164,7 +160,7 @@ class App extends React.Component<Props, State> {
   };
 
   handleMatchedCards = () => {
-    const updatedCards = this.state.cards.map((card) => {
+    const updatedCards = this.state.cards.map(card => {
       const updatedCard = card;
       const isActivated = this.state.activeCards.includes(updatedCard.image);
 
@@ -184,7 +180,7 @@ class App extends React.Component<Props, State> {
     );
 
     this.setState(
-      (prevState) => ({
+      prevState => ({
         cards: updatedCards,
         activeCards: [],
         noMatched: updatedNoMatched / 2,
@@ -193,9 +189,9 @@ class App extends React.Component<Props, State> {
     );
   };
 
-  handleBoardSizeChange = (e) => {
+  handleBoardSizeChange = e => {
     const updatedBoardSize = e.target.value;
-    this.setState((prevState) => ({
+    this.setState(prevState => ({
       ...prevState,
       boardSize: updatedBoardSize,
       boardChanged: true,
@@ -204,7 +200,7 @@ class App extends React.Component<Props, State> {
 
   handleResetBoard = () => {
     this.setState(
-      (prevState) => ({
+      prevState => ({
         ...prevState,
         activeCards: [],
         noTries: 0,
