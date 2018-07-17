@@ -23,7 +23,7 @@ type Props = {
   boardSize: number,
   cards: Array<Object>,
   cardsMatched: void => void,
-  changeBoardSize: number => void,
+  changeBoardSize: string => void,
   deactivateAllCards: void => void,
   noMatched: number,
   noTries: number,
@@ -55,10 +55,17 @@ class App extends React.Component<Props> {
     this.props.deactivateAllCards();
   };
 
-  handleBoardSizeChange = e => {
-    const updatedBoardSize = e.target.value;
-    this.props.changeBoardSize(updatedBoardSize);
+  handleBoardSizeChange = (e: ?SyntheticEvent<HTMLInputElement>) => {
+    if (e) {
+      const updatedBoardSize = e.currentTarget.value;
+      this.props.changeBoardSize(updatedBoardSize);
+    }
   };
+
+  handleBoardReset = () => {
+    this.props.resetBoard();
+    this.props.populateBoard();
+  }
 
   render() {
     const playerWon =
@@ -75,7 +82,7 @@ class App extends React.Component<Props> {
         <GameControls
           boardSize={this.props.boardSize}
           resizeBoard={this.handleBoardSizeChange}
-          resetBoard={this.props.resetBoard}
+          resetBoard={this.handleBoardReset}
         />
 
         <GameBoard
@@ -83,7 +90,7 @@ class App extends React.Component<Props> {
           cards={this.props.cards}
         />
 
-        {playerWon && <SuccessModal resetBoard={this.props.resetBoard} />}
+        {playerWon && <SuccessModal resetBoard={this.handleBoardReset} />}
       </Wrapper>
     );
   }

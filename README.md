@@ -11,6 +11,7 @@ http://pairs.wojtekdudek.xyz
 ## Tools Used
 
 - React 16.4
+- Redux / react-redux
 - Styled Components
 - Flow (static type checker)
 - ESLint
@@ -24,15 +25,18 @@ http://pairs.wojtekdudek.xyz
 - [x] create random array of cards (odd number, 2 for each selected image)
 - [x] allow player to choose game's board size
 - [x] add reset button
-- [ ] add animation for SuccessModal (to appear & disappear)
+- [x] restyling
+- [x] make it fully responsive
+- [x] add animation for SuccessModal (to appear & disappear)
+- [ ] gameReducer cleanup - now it's messy and ugly (extract, when necessary, helper functions)...
+- [ ] while responsive, it's still not to convenient to play on small screen - resize cards depending on viewport size
+- [ ] add prettier animations for SuccessModal?
 - [ ] add timer
 - [ ] add warning when player tries to change board size during the game
 - [ ] add score table (top x)
-- [ ] make it fully responsive
 - [ ] move state to Redux store
-- [ ] add persistence
-- [ ] restyling
-- [ ] add themes (plants, animals, GoT characters...?)
+- [ ] add persistence (localstore would be best here, I guess)
+- [ ] add themes (plants, animals, GoT characters, etc...)
 - [ ] add tests ;D
 
 ## Bugs

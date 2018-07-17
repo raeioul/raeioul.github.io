@@ -1,5 +1,5 @@
 // @flow
-import React from 'react';
+import * as React from 'react';
 import Card from '../Card/Card';
 import { Wrapper } from './GameBoard.styles';
 
