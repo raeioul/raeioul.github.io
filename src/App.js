@@ -3,8 +3,6 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import {
   populateBoard,
-  shuffleImages,
-  createCards,
   activateCard,
   deactivateAllCards,
   changeBoardSize,
@@ -35,7 +33,9 @@ import img14 from './assets/images/14.jpg';
 import img15 from './assets/images/15.jpg';
 import img16 from './assets/images/16.jpg';
 
-type Props = {};
+type Props = {
+  populateBoard: void => void,
+};
 
 type State = {
   boardSize: number,
@@ -76,7 +76,7 @@ class App extends React.Component<Props, State> {
   };
 
   componentDidMount() {
-    this.populateBoard();
+    this.props.populateBoard();
   }
 
   componentDidUpdate() {
@@ -234,14 +234,14 @@ class App extends React.Component<Props, State> {
         </h4>
 
         <GameControls
-          boardSize={this.state.boardSize}
+          boardSize={this.props.boardSize}
           resizeBoard={this.handleBoardSizeChange}
           resetBoard={this.handleResetBoard}
         />
 
         <GameBoard
           cardClicked={this.handleCardActivation}
-          cards={this.state.cards}
+          cards={this.props.cards}
         />
 
         {playerWon && <SuccessModal resetBoard={this.handleResetBoard} />}
@@ -266,8 +266,6 @@ export default connect(
   mapStateToProps,
   {
     populateBoard,
-    shuffleImages,
-    createCards,
     activateCard,
     deactivateAllCards,
     changeBoardSize,

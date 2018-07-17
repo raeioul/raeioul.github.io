@@ -1,7 +1,5 @@
 export {
   populateBoard,
-  shuffleImages,
-  createCards,
   activateCard,
   deactivateAllCards,
   changeBoardSize,

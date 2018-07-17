@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import {
   POPULATE_BOARD,
   SHUFFLE_IMAGES,
@@ -8,21 +9,38 @@ import {
   RESET_BOARD,
 } from './actionTypes';
 
+function shuffleImages(boardSize, images) {
+  // Shuffle initial array and make a slice needed
+  // to populate board of specified size
+  let imgArray = _.shuffle(images);
+  imgArray = imgArray.slice(0, boardSize / 2);
+
+  // Each image must appear twice on the board
+  imgArray = [...imgArray, ...imgArray];
+
+  return _.shuffle(imgArray);
+}
+
+function createCards({ boardSize, images }) {
+  const cards = [];
+  const selectedImages = shuffleImages(boardSize, images);
+
+  for (let i = 0; i < boardSize; i += 1) {
+    cards.push({
+      id: `${i}`,
+      image: selectedImages[i],
+      isActive: false,
+      matched: false,
+    });
+  }
+
+  return cards;
+}
+
 export function populateBoard() {
   return {
     type: POPULATE_BOARD,
-  };
-}
-
-export function shuffleImages() {
-  return {
-    type: SHUFFLE_IMAGES,
-  };
-}
-
-export function createCards() {
-  return {
-    type: CREATE_CARDS,
+    createCards,
   };
 }
 
