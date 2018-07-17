@@ -4,6 +4,8 @@ import {
   CREATE_CARDS,
   ACTIVATE_CARD,
   DEACTIVATE_ALL_CARDS,
+  CHANGE_BOARD_SIZE,
+  RESET_BOARD,
 } from './actionTypes';
 
 export function populateBoard() {
@@ -34,5 +36,18 @@ export function activateCard(cardId) {
 export function deactivateAllCards() {
   return {
     type: DEACTIVATE_ALL_CARDS,
+  };
+}
+
+export function changeBoardSize(newSize) {
+  return {
+    type: CHANGE_BOARD_SIZE,
+    size: newSize,
+  };
+}
+
+export function resetBoard() {
+  return {
+    type: RESET_BOARD,
   };
 }

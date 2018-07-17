@@ -4,4 +4,6 @@ export {
   createCards,
   activateCard,
   deactivateAllCards,
+  changeBoardSize,
+  resetBoard,
 } from './gameActions';

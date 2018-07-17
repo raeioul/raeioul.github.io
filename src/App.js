@@ -1,5 +1,16 @@
 // @flow
 import * as React from 'react';
+import { connect } from 'react-redux';
+import {
+  populateBoard,
+  shuffleImages,
+  createCards,
+  activateCard,
+  deactivateAllCards,
+  changeBoardSize,
+  resetBoard,
+} from './store/actions';
+
 import _ from 'lodash';
 import { Wrapper, MainHeader } from './App.styles';
 
@@ -239,4 +250,27 @@ class App extends React.Component<Props, State> {
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    boardSize: state.game.boardSize,
+    boardChanged: state.game.boardChanged,
+    activeCards: state.game.activeCards,
+    images: state.game.images,
+    cards: state.game.cards,
+    noTries: state.game.noTries,
+    noMatched: state.game.noMatched,
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  {
+    populateBoard,
+    shuffleImages,
+    createCards,
+    activateCard,
+    deactivateAllCards,
+    changeBoardSize,
+    resetBoard,
+  },
+)(App);
