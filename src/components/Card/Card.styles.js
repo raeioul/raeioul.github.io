@@ -64,6 +64,7 @@ const Face = css`
       ? 'transparent'
       : 'linear-gradient(var(--mango), var(--dark-mango) 50%, var(--mango))'};
   animation: ${p => p.matched && 'fadeout'} 1s ease-in-out 300ms forwards;
+  transition: background 0ms ease-in-out 3000ms;
 
   @keyframes fadeout {
     from {

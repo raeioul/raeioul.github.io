@@ -18,7 +18,7 @@ const Square = (props: Props) => {
         activated={props.activated}
       >
         <span />
-        <Back matched={props.matched} />
+        <Back />
         <Front image={props.image} matched={props.matched} />
       </Card>
     </Wrapper>

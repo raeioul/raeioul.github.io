@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  max-width: ${(p) => setMaxWidth(p)};
+  max-width: ${p => setMaxWidth(p)};
   margin: 3rem 0;
 `;
 

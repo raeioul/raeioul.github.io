@@ -26,6 +26,7 @@ http://pairs.wojtekdudek.xyz
 - [x] add reset button
 - [ ] add animation for SuccessModal (to appear & disappear)
 - [ ] add timer
+- [ ] add warning when player tries to change board size during the game
 - [ ] add score table (top x)
 - [ ] make it fully responsive
 - [ ] move state to Redux store
