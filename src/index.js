@@ -12,9 +12,11 @@ import registerServiceWorker from './registerServiceWorker';
 injectGlobal`${globalStyles}`;
 
 const app = (
-  <Provider store={store}>
-    <App />
-  </Provider>
+  <React.StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </React.StrictMode>
 );
 
 ReactDOM.render(app, document.getElementById('root'));
