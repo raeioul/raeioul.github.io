@@ -1,9 +1,8 @@
 import _ from 'lodash';
 import {
   POPULATE_BOARD,
-  SHUFFLE_IMAGES,
-  CREATE_CARDS,
   ACTIVATE_CARD,
+  CARDS_MATCHED,
   DEACTIVATE_ALL_CARDS,
   CHANGE_BOARD_SIZE,
   RESET_BOARD,
@@ -51,6 +50,12 @@ export function activateCard(cardId) {
   };
 }
 
+export function cardsMatched() {
+  return {
+    type: CARDS_MATCHED,
+  };
+}
+
 export function deactivateAllCards() {
   return {
     type: DEACTIVATE_ALL_CARDS,
@@ -60,12 +65,13 @@ export function deactivateAllCards() {
 export function changeBoardSize(newSize) {
   return {
     type: CHANGE_BOARD_SIZE,
-    size: newSize,
+    boardSize: newSize,
   };
 }
 
 export function resetBoard() {
   return {
     type: RESET_BOARD,
+    createCards,
   };
 }

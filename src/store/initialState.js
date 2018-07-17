@@ -16,7 +16,7 @@ import img15 from '../assets/images/15.jpg';
 import img16 from '../assets/images/16.jpg';
 
 const initialState = {
-  boardSize: 0,
+  boardSize: 8,
   boardChanged: false,
   activeCards: [],
   images: [

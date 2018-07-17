@@ -1,6 +1,7 @@
 export {
   populateBoard,
   activateCard,
+  cardsMatched,
   deactivateAllCards,
   changeBoardSize,
   resetBoard,
