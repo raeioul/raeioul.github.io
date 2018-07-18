@@ -37,7 +37,6 @@ class App extends React.Component<Props> {
   }
 
   componentDidUpdate() {
-    console.log(this.props.boardSize);
     if (this.props.activeCards.length >= 2) {
       if (this.props.activeCards[0] === this.props.activeCards[1]) {
         this.handleMatchedCards();
@@ -47,7 +46,6 @@ class App extends React.Component<Props> {
     }
 
     if (this.props.boardChanged) {
-      console.log('reset');
       this.props.resetBoard();
     }
   }
