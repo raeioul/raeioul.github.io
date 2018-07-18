@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 3rem;
+  margin: 3rem 0;
 `;
 
 export const MainHeader = styled.h1`

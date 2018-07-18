@@ -29,7 +29,7 @@ http://pairs.wojtekdudek.xyz
 - [x] make it fully responsive
 - [x] add animation for SuccessModal (to appear & disappear)
 - [ ] gameReducer cleanup - now it's messy and ugly (extract, when necessary, helper functions)...
-- [ ] while responsive, it's still not to convenient to play on small screen - resize cards depending on viewport size
+- [x] while responsive, it's still not to convenient to play on small screen - resize cards depending on viewport size
 - [ ] add prettier animations for SuccessModal?
 - [ ] add timer
 - [ ] add warning when player tries to change board size during the game
@@ -42,6 +42,6 @@ http://pairs.wojtekdudek.xyz
 ## Bugs
 
 - [ ] - number of tries is incremented after timeout (hence the delay) - should be increased immediately
-- [ ] - success modal needs to be centered vertically (now its position depends on board size)
+- [x] - success modal needs to be centered vertically (now its position depends on board size)
 - [x] - ~~~clicking on matched images multiple times increments "matched" counter~~~
 - [x] - ~~~successfull match must reset timeout~~~

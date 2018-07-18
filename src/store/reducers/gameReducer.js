@@ -96,6 +96,7 @@ function gameReducer(state = initialState, action) {
       return {
         ...state,
         activeCards: [],
+        boardChanged: false,
         noTries: 0,
         noMatched: 0,
       };

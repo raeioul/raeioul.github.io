@@ -4,9 +4,19 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 150px;
-  height: 180px;
+  width: 85px;
+  height: 85px;
   perspective: 500px;
+
+  @media (min-width: 450px) {
+    width: 110px;
+    height: 110px;
+  }
+
+  @media (min-width: 600px) {
+    width: 150px;
+    height: 180px;
+  }
 `;
 
 const shoudlYRotate = props => {
@@ -23,8 +33,8 @@ export const Card = styled.div`
   align-items: center;
   font-weight: 700;
   font-size: 8rem;
-  width: 130px;
-  height: 160px;
+  width: 80px;
+  height: 80px;
   border: 2px dotted ${p => (p.matched ? 'var(--mango)' : 'transparent')};
   border-radius: 5px;
   user-select: none;
@@ -37,6 +47,11 @@ export const Card = styled.div`
   :after {
     content: '\\2606';
     color: ${p => (p.matched ? 'var(--mango)' : 'transparent')};
+    font-size: 5rem;
+
+    @media (min-width: 450px) {
+      font-size: inherit;
+    }
   }
 
   @keyframes showBorder {
@@ -46,6 +61,16 @@ export const Card = styled.div`
     to {
       border-color: var(--mango);
     }
+  }
+
+  @media (min-width: 450px) {
+    width: 100px;
+    height: 100px;
+  }
+
+  @media (min-width: 600px) {
+    width: 130px;
+    height: 160px;
   }
 `;
 
@@ -59,12 +84,13 @@ const Face = css`
   height: 100%;
   width: 100%;
   backface-visibility: hidden;
+  color: #fff;
   background: ${p =>
     p.matched
       ? 'transparent'
       : 'linear-gradient(var(--mango), var(--dark-mango) 50%, var(--mango))'};
   animation: ${p => p.matched && 'fadeout'} 1s ease-in-out 300ms forwards;
-  transition: background 0ms ease-in-out 3000ms;
+  transition: background 0ms ease-in-out 1000ms, color 0ms ease-in-out 1000ms;
 
   @keyframes fadeout {
     from {
@@ -81,11 +107,14 @@ const Face = css`
 export const Back = styled.div`
   ${Face} :after {
     content: '?';
-    color: #fff;
+
     font-family: 'Lobster', cursive;
     font-weight: initial;
-    border: 2px solid #fff;
-    padding: 2rem 3rem;
+
+    @media (min-width: 600px) {
+      border: 2px solid #fff;
+      padding: 2rem 3rem;
+    }
   }
 `;
 
