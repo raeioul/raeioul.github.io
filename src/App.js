@@ -15,6 +15,8 @@ import { Wrapper, MainHeader } from './App.styles';
 import GameControls from './components/GameControls/GameControls';
 import GameBoard from './components/GameBoard/GameBoard';
 import SuccessModal from './components/SuccessModal/SuccessModal';
+import Header from './components/Header/Header';
+
 
 type Props = {
   activeCards: Array<number>,
@@ -34,6 +36,7 @@ type Props = {
 class App extends React.Component<Props> {
   componentDidMount() {
     this.props.populateBoard();
+    document.body.style.backgroundColor = "#b9dff8";
   }
 
   componentDidUpdate() {
@@ -66,7 +69,7 @@ class App extends React.Component<Props> {
   handleBoardReset = () => {
     this.props.resetBoard();
     this.props.populateBoard();
-  }
+  };
 
   render() {
     const playerWon =
@@ -75,24 +78,24 @@ class App extends React.Component<Props> {
 
     return (
       <Wrapper>
-        <MainHeader>Find the Pair</MainHeader>
-        <h4 style={{ color: 'var(--dust)', fontSize: '2rem' }}>
-          Tries: {this.props.noTries} :: Matched: {this.props.noMatched}
-        </h4>
-
-        <GameControls
-          boardSize={this.props.boardSize}
-          resizeBoard={this.handleBoardSizeChange}
-          resetBoard={this.handleBoardReset}
-        />
+        <Header />
+        
 
         <GameBoard
           cardClicked={this.props.activateCard}
           cards={this.props.cards}
         />
-
+        <GameControls
+          boardSize={this.props.boardSize}
+          resizeBoard={this.handleBoardSizeChange}
+          resetBoard={this.handleBoardReset}
+        />
+        <h4 style={{ color: 'var(--dust)', fontSize: '2rem' }}>
+          Intentos: {this.props.noTries} :: Pares: {this.props.noMatched}
+        </h4>
         {playerWon && <SuccessModal resetBoard={this.handleBoardReset} />}
       </Wrapper>
+    
     );
   }
 }

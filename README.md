@@ -28,8 +28,8 @@ http://pairs.wojtekdudek.xyz
 - [x] restyling
 - [x] make it fully responsive
 - [x] add animation for SuccessModal (to appear & disappear)
-- [ ] gameReducer cleanup - now it's messy and ugly (extract, when necessary, helper functions)...
 - [x] while responsive, it's still not to convenient to play on small screen - resize cards depending on viewport size
+- [ ] gameReducer cleanup - now it's messy and ugly (extract, when necessary, helper functions)...
 - [ ] add prettier animations for SuccessModal?
 - [ ] add timer
 - [ ] add warning when player tries to change board size during the game
